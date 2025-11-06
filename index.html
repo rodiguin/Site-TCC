@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Montagem e Manutenção de Computadores</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1e1e2e;
+      color: #e4e4e4; 
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #2a2a3b;
+      border-bottom: 1px solid #444;
+      top: 0;
+      left: 0;
+      width: 100%;
+      position: fixed;
+      z-index: 1000;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+    }
+    
+    .logo img {
+      max-width: 180px;
+      height: auto;
+    }
+    
+    .menu {
+      display: flex;
+      gap: 40px;
+    }
+    
+    .menu a {
+      color: #e4e4e4;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.3s, transform 0.2s, opacity 0.3s;
+      font-size: 20px;
+      pointer-events: none;
+      opacity: 0.4;
+      cursor: default;
+    }
+    
+    .menu a.active {
+      pointer-events: auto;
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('capa.png') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      margin-top: 70px;
+    }
+
+    .hero h1 {
+      font-size: 72px;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 600px;
+      margin-bottom: 30px;
+      color: #cfcfcf;
+    }
+
+    .hero .btn {
+      padding: 15px 40px;
+      background-color: white;
+      color: black;
+      font-size: 22px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+      text-decoration: none;
+    }
+
+    .hero .btn:hover {
+      background-color: #2a2a3b;
+      transform: scale(1.05);
+    }
+
+    .content {
+      display: none;
+      margin-top: 100px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .container {
+      border: 1px solid #444;
+      background-color: #2a2a3b;
+      width: 90%;
+      max-width: 1000px;
+      margin: 40px auto;
+	  display: flex;
+      padding: 20px;
+      border-radius: 8px;
+	  align-: center;
+    }
+	
+
+	
+    h2 {
+      padding-left: 5px;
+      color: white;
+    }
+
+    h3 {
+		font-size: 25px;
+		color: #FFFAFA;
+    }
+
+	    .caixa {
+      background-color: #2b2b40;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .caixa img {
+      width: 60px;
+      height: 60px;
+    }
+	
+    .conteudo {
+      flex: 1;
+    }
+
+    .conteudo h3 {
+      margin-top: 0;
+      color: #FFFAFA;
+    }
+
+    .conteudo ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .conteudo li {
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 16px;
+      background-color: #2f2f40;
+      color: #f1f1f1;
+    }
+
+    th, td {
+      border: 1px solid #555;
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: #3a3a55;
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #353547;
+    }
+
+    footer {
+      background-color: #2a2a3b;
+      color: #e4e4e4;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid #444;
+      margin-top: 40px;
+      font-size: 16px;
+    }
+    
+    .footer-content p {
+      margin: 5px 0;
+    }
+
+    .section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+      opacity: 1;
+    }
+	
+	#descrições img {
+	  display: block;
+	  margin: 20px auto;
+	}
+
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="InfoWare.png" alt="Logo Montagem e Manutenção">
+      </div>
+      <div class="menu">
+        <a data-section="intro">Início</a>
+        <a data-section="montagem">Montagem</a>
+        <a data-section="manutencao">Manutenção</a>
+        <a data-section="componentes">Componentes</a>
+        <a data-section="descrições">descrições</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <h1>InfoWare</h1>
+    <p>Aprenda tudo sobre montagem, manutenção e escolha de componentes de computadores</p>
+    <button class="btn" onclick="iniciarSite()">Iniciar</button>
+  </section>
+
+  <div class="content" id="conteudo">
+    <div class="container">
+
+      <section id="intro" class="section">
+        <h2>Introdução – Montagem e Manutenção de Computadores</h2>
+        <p>A tecnologia está presente em quase todos os aspectos da nossa vida,
+		e o computador se tornou uma das ferramentas mais importantes do dia a dia. 
+		Porém, muitas vezes, ele é visto apenas como uma “caixa preta”: usamos, mas não entendemos realmente como funciona por dentro. 
+		É exatamente aqui que entra a montagem e manutenção de computadores.
+		Este site foi criado para guiar você nesse universo, 
+		mostrando desde os conceitos básicos até tópicos mais aprofundados que vão ajudá-lo a compreender, montar, reparar e até otimizar o desempenho de um PC.</p>
+		
+		<h2>O que você vai encontrar aqui?</h2>
+			<div class="caixa">
+			  <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="Hardware">
+			  <div class="conteudo">
+				<h3>Componentes de Hardware</h3>
+				<ul>
+				  <li>Explicações detalhadas sobre cada peça do computador: placa-mãe, processador, memória RAM, HD/SSD, placa de vídeo, fonte, refrigeração e gabinetes.</li>
+				  <li>Como escolher os componentes certos e entender sua compatibilidade.</li>
+				</ul>
+			  </div>
+			</div>
+
+			<div class="caixa">
+			  <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Montagem">
+			  <div class="conteudo">
+				<h3>Passo a passo da Montagem</h3>
+				<ul>
+				  <li>Guia ilustrado para montar um computador do zero, com dicas de segurança, organização de cabos e boas práticas.</li>
+				  <li>Orientações para iniciantes e também macetes para quem já tem experiência.</li>
+				</ul>
+			  </div>
+			</div>
+
+			<div class="caixa">
+			  <img src="https://cdn-icons-png.flaticon.com/512/3076/3076796.png" alt="Manutenção">
+			  <div class="conteudo">
+				<h3>Manutenção Preventiva e Corretiva</h3>
+				<ul>
+				  <li>Como realizar limpezas internas e externas.</li>
+				  <li>Identificação de falhas comuns e como corrigi-las.</li>
+				  <li>Técnicas para prolongar a vida útil do PC.</li>
+				</ul>
+			  </div>
+			</div>
+
+			<div class="caixa">
+			  <img src="https://cdn-icons-png.flaticon.com/512/1048/1048947.png" alt="Problemas">
+			  <div class="conteudo">
+				<h3>Soluções de Problemas Reais</h3>
+				<ul>
+				  <li>O que fazer quando o computador não liga?</li>
+				  <li>Como resolver problemas de superaquecimento?</li>
+				  <li>Diagnóstico de lentidão e travamentos.</li>
+				</ul>
+			  </div>
+			</div>
+
+			<div class="caixa">
+			  <img src="https://cdn-icons-png.flaticon.com/512/993/993928.png" alt="Performance">
+			  <div class="conteudo">
+				<h3>Aprofundamento em Performance</h3>
+				<ul>
+				  <li>Overclock, upgrades e ajustes para extrair o máximo do hardware.</li>
+				  <li>Comparativos entre peças para ajudar na escolha da melhor configuração.</li>
+				</ul>
+			  </div>
+			</div>
+
+		<h2>Qual o atual objetivo? </h2>
+		<p>Este site tornará o aprendizado acessível e prático, mostrando que montar ou consertar um computador não é um bicho de sete cabeças.
+		Com o conteúdo disponível aqui, você vai adquirir confiança para lidar com seu PC e ainda abrir portas para novas oportunidades na área de tecnologia.</p>
+		
+     </section>
+
+    <section id="montagem" class="section">
+        <h2>Montagem de Computadores</h2>
+        <p>A montagem de computadores é o processo de reunir e conectar os diversos componentes de hardware para formar um sistema funcional. 
+		Diferente de simplesmente comprar um computador pronto, a montagem oferece a possibilidade de personalizar cada parte de acordo com a necessidade do usuário — seja para tarefas simples, 
+		estudos, trabalhos de escritório,	design, edição de vídeo ou jogos.</p>
+
+		<p>Esse processo vai muito além de apenas encaixar peças: ele envolve planejamento, compatibilidade e boas práticas técnicas. 
+		Cada componente — como placa-mãe, processador, memória RAM, placa de vídeo, fonte de alimentação, armazenamento e gabinete — precisa ser escolhido de forma adequada, garantindo que trabalhem em conjunto sem incompatibilidades.</p>
+		
+		<h3>1. Preparação e Segurança</h3>
+		<p>Antes de começar, certifique-se de trabalhar em um ambiente limpo e bem iluminado. Use uma pulseira antiestática ou descarregue a eletricidade tocando em superfícies metálicas, 
+		evitando danos aos componentes. Mantenha todas as peças próximas e verifique se possui as ferramentas necessárias, como chaves de fenda e abraçadeiras para cabos.</p>
+		
+		<h3>2. Ordem de Montagem</h3>
+		<p>Uma boa sequência facilita o processo:
+		<ul>
+			<li>Instale a fonte de alimentação.</li>
+
+			<li>Monte a placa-mãe com processador, cooler e memória RAM.</li>
+
+			<li>Fixe a placa-mãe no gabinete.
+
+			<li>Adicione a placa de vídeo e outros dispositivos de expansão.</li>
+
+			<li>Conecte os cabos de energia e dados.</li>
+
+			<li>Finalize com a instalação dos discos (SSD/HDD).</li>
+		</ul>
+		
+		<h3>3. Organização de Cabos</h3>
+		<p>Um dos segredos para um PC bem montado é a gestão dos cabos. Use canaletas do gabinete, abraçadeiras plásticas ou velcro para manter os fios alinhados.
+		Isso não só melhora o visual, como também contribui para a circulação de ar, evitando superaquecimento.</p>
+		
+		<h3>4. Boas Práticas</h3>
+		<ul>
+			<li>Sempre leia o manual da placa-mãe e dos componentes.</li>
+
+			<li>Aplique pasta térmica de forma moderada no processador.</li>
+
+			<li>Evite forçar encaixes: se não entrou, verifique a posição correta.</li>
+
+			<li>Teste o sistema antes de fechar o gabinete.</li>
+		</ul>
+		
+		<h3>5. Macetes para Usuários Experientes</h3>
+		<ul>
+			<li>Use cabos customizados ou extensões para um visual mais clean.</li>
+			
+			<li>Aposte em sistemas de refrigeração líquida para maior eficiência térmica.</li>
+			
+			<li>Configure o gerenciamento de ventoinhas na BIOS para otimizar ruído e desempenho.</li>
+			
+			<li>Utilize organizadores magnéticos para manter parafusos e ferramentas sempre à mão.</li>
+		</ul>
+		
+	</section>
+
+    <section id="manutencao" class="section">
+        <h2>Manutenção de Computadores: Seus tipos e importância</h2>
+		<p>A manutenção de computadores é um conjunto de ações realizadas para garantir o bom funcionamento das máquinas, prolongar sua vida útil e evitar falhas que possam prejudicar o usuário. 
+		Assim como qualquer outro equipamento, os computadores também precisam de cuidados regulares, seja para corrigir problemas já existentes ou para preveni-los.</p>
+		
+		<h3>1. Manutenção Preventiva</h3>
+		<p>A manutenção preventiva é realizada de forma programada, antes que ocorram falhas. Seu objetivo é evitar problemas futuros e manter o computador em ótimo estado de uso.
+		Algumas ações comuns nesse tipo de manutenção incluem:</p>
+		<ul>
+			<li>Limpeza interna do gabinete, removendo poeira de coolers e componentes.
+			Podendo utilizar um soprador de ar (ou secador de cabelo no modo frio), pincéis antiestáticos, um pano de microfibra, álcool isopropílico, e cotonetes. </li>
+			
+			<li>Verificação de cabos e conectores para evitar mal contato e manter o bom funcionamento do computador.</li>
+			
+			<li>Atualização de drivers e sistema operacional, para então extrair o máximo de desempenho possível.</li>
+			
+			<li>Testes de desempenho e temperatura para garantir a confiabilidade e a durabilidade do computador, identificando falhas e otimizando o funcionamento antes que problemas maiores ocorram.</li>
+		</ul>
+		
+		<h3>2. Manutenção Corretiva</h3>
+		<p>A manutenção corretiva ocorre quando o computador já apresenta falhas ou parou de funcionar. Nesse caso, a prioridade é identificar a causa do problema e realizar o reparo.
+		Exemplos:</p>
+		<ul>
+			<li>Troca de componentes queimados ou danificados.</li>			
+			<li>Reparo de falhas no sistema operacional. </li>
+        </ul>
+		
+		<h3>3. Manutenção Preditiva</h3>
+		<p>A manutenção preditiva é baseada no monitoramento constante dos computadores, utilizando softwares que analisam o desempenho e identificam possíveis falhas antes que aconteçam, como por exemplo, 
+		softwares que monitoram a temperatura da CPU e GPU, e análises gerais.</p>
+		
+		<h3>4. Manutenção Evolutiva</h3>
+		<p>A manutenção evolutiva busca melhorar o desempenho e atualizar os recursos do computador. Diferente das demais, ela não trata de problemas, mas sim de upgrades.
+		Exemplos:</p>
+		<ul>
+			<li>Instalação de mais memória RAM.</li>
+
+			<li>Substituição de HD por SSD.</li>
+
+			<li>Upgrade de placa de vídeo.</li>
+
+			<li>Implementação de sistemas de refrigeração mais eficientes.</li>
+		</ul>
+    </section>
+
+    <section id="componentes" class="section">
+        <h2>Componentes</h2>
+		
+		<p>Quando falamos em montar um computador, o primeiro passo é entender a função de cada componente. 
+		A placa-mãe é a peça central, onde todos os outros componentes se conectam. Ela possui o soquete do processador, slots de memória RAM, entradas para armazenamento (como SSDs e HDs), 
+		além de conexões para placa de vídeo e periféricos. 
+		Cada placa-mãe tem um chipset que define seus recursos e limitações, como suporte a overclock, número de portas USB e velocidade de comunicação. 
+		As mais comuns seguem os tamanhos ATX, Micro-ATX e Mini-ITX. Antes de comprar, é essencial verificar a compatibilidade com o processador e a memória que você pretende usar. 
+		Marcas conhecidas são ASUS, Gigabyte, MSI e ASRock.</p>
+		<img src="placas.jpg" alt="tamanhos de cada placa mãe" width="500" height="180" >
+		
+		<p>O processador (CPU) é considerado o cérebro do computador. Ele executa cálculos e instruções, trabalhando em conjunto com a RAM para dar vida ao sistema. 
+		Alguns detalhes importantes são os núcleos (cores), que funcionam como processadores independentes; os threads, que permitem multitarefas; 
+		e a frequência (GHz), que mede a velocidade de operação. Para uso simples, como estudos e navegação, processadores Intel i3 ou Ryzen 3 já dão conta. 
+		Para jogos, i5 ou Ryzen 5 são o ideal, enquanto para tarefas mais pesadas como edição de vídeo, i7/i9 ou Ryzen 7/9 se destacam.</p>
+		<img src="cpu.jpg" alt="ryzenXintel">
+		
+		<p>A memória RAM é responsável por armazenar informações temporárias que o processador precisa acessar rapidamente. 
+		Hoje, os tipos mais usados são DDR4 e DDR5, e sua velocidade é medida em MHz (por exemplo: 3200MHz ou 5600MHz). 
+		Quanto maior a frequência e a capacidade, melhor o desempenho. Uma curiosidade é que usar a RAM em dual channel (dois pentes iguais) 
+		garante maior performance. Para uso básico, 8GB é suficiente, mas para jogos e multitarefas o ideal é partir de 16GB. Marcas confiáveis são Corsair, Kingston, Crucial e G.Skill.</p>
+		<img src="RAM.jpg" alt="memória RAM">
+		
+		<p>A placa de vídeo (GPU) é essencial para quem joga, trabalha com design ou edição de vídeo. 
+		Ela processa os gráficos e pode ser integrada ao processador (em PCs básicos) ou dedicada, conectada no slot PCIe da placa-mãe. 
+		O desempenho de uma GPU depende de fatores como a memória VRAM, a arquitetura e a eficiência energética. É importante destacar que, em muitos casos, a placa de vídeo impacta mais o desempenho em jogos do que o próprio processador. 
+		As principais opções são NVIDIA (GeForce) e AMD (Radeon), sendo fabricadas por marcas como ASUS, MSI, Gigabyte e EVGA.</p>
+		<img src="gpu.jpg" alt="gpu">
+		
+		<p>O armazenamento é dividido principalmente em dois tipos: HDs (discos rígidos), que oferecem muito espaço a um custo baixo, mas são lentos; e SSDs, que são muito mais rápidos e ideais para o sistema operacional e programas.
+		Dentro dos SSDs, existem os modelos SATA (bons e acessíveis) e os NVMe (M.2), que usam a tecnologia PCIe para atingir velocidades muito superiores. 
+		A recomendação atual é usar pelo menos um SSD para o sistema e, se necessário, um HD para guardar arquivos grandes. Marcas como Kingston, Crucial, WD e Samsung são bastante confiáveis.</p>
+		<img src="armazenamento.jpg">
+		
+		<p>A fonte de alimentação (PSU) é um dos componentes mais subestimados, mas também um dos mais importantes. Ela converte a energia elétrica da tomada e a distribui para todos os outros componentes. 
+		Uma fonte ruim pode causar travamentos e até queimar peças. Por isso, sempre prefira fontes com certificação 80 Plus, que garantem eficiência e segurança. 
+		Marcas confiáveis são Corsair, EVGA, Seasonic e Cooler Master. O ideal é calcular a potência necessária de acordo com sua configuração, evitando exageros ou falta de energia.</p>
+		<img src="fonte.jpg">
+		
+		<p>Para manter tudo funcionando em temperatura ideal, entra o sistema de refrigeração. Ele pode ser composto por coolers a ar, mais baratos e fáceis de instalar, ou water coolers,
+		que usam líquido para resfriar o processador e oferecem desempenho maior, muito usados em PCs gamers. O cooler stock (que vem com o processador) geralmente dá conta em PCs simples, mas se você pretende jogar ou fazer overclock,
+		é importante investir em uma refrigeração melhor.</p>
+		<img src="coolers.jpg">
+		
+		<p>O gabinete (case) é a estrutura que abriga todos os componentes. Ele protege contra poeira, facilita a organização dos cabos e ajuda no fluxo de ar.
+		Os tamanhos mais comuns são Full Tower, Mid Tower e Mini Tower, cada um com espaço interno diferente. Além disso, gabinetes modernos costumam ter vidro temperado e iluminação RGB, 
+		mas a prioridade deve ser sempre a ventilação e o espaço para futuros upgrades. Boas marcas são NZXT, Corsair, Cooler Master e Redragon.</p>
+		<img src="case.jpg">
+		
+        <table>
+			<thead>
+				<tr>
+				<th>Componentes</th>
+				<th>Modelos e Preços</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				<td>Placa-mãe</td>
+				<td>ASUS TUF Gaming B550M‑Plus (R$ 888,99), Gigabyte B550M Aorus Elite (R$ 879,00)<br>
+				Boas marcas, suporta memória decente, chipset B550.</td>
+				</tr>
+
+
+				<tr>
+				<td>Processador</td>
+				<td>Intel Core i5‑12400F (~R$ 709,99), AMD Ryzen 5 5600 (~R$ 849,90)<br>
+				Ótimo custo-benefício para PCs de uso geral / jogos recentes.</td>
+				</tr>
+
+
+				<tr>
+				<td>Memória RAM</td>
+				<td>Corsair Vengeance DDR4 16GB (2x8GB) 3200MHz (~R$ 249–399)<br>
+				Desempenho decente, ótimo custo-benefício.</td>
+				</tr>
+
+
+				<tr>
+				<td>Armazenamento</td>
+				<td>SSD Crucial BX500 480GB (~R$ 239,89), HD Seagate Barracuda 1TB (~R$ 250–300)<br>
+				Armazenamento de entrada Ideal para sistema + programas básicos.</td>
+				</tr>
+
+
+				<tr>
+				<td>Fonte</td>
+				<td>Corsair CV550 550W (~R$ 319,00), EVGA 600W 80 Plus (~R$ 350,00)<br>
+				Um dos melhores custo-benefício do mercado.</td>
+				</tr>
+
+
+				<tr>
+				<td>Placa de Vídeo</td>
+				<td>NVIDIA GeForce RTX 3060 (~R$ 1.599,00), AMD Radeon RX 6600 (~R$ 1.499,00)<br>
+				Placas intermediárias, capazes de rodar todos os jogos, porém, com ajustes.</td>
+				</tr>
+
+
+				<tr>
+				<td>Cooler / Refrigeração</td>
+				<td>DeepCool AK400 (~R$ 169,90), Cooler Master Hyper 212 (~R$ 249,00)<br>
+				Um cooler bom a ar, indicado para PCs que exigem resfriamento melhor.</td>
+				</tr>
+
+
+				<tr>
+				<td>Gabinete</td>
+				<td>Montech XR (~R$ 399,90), NZXT H510 (~R$ 499,00)<br>
+				Ótimos gabinetes, preços equilibrados e boa construção.</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="links-lojas">
+			<strong>Links de lojas confiáveis:</strong><br>
+			<a href="https://www.kabum.com.br" target="_blank">KaBuM!</a>
+			<a href="https://www.terabyteshop.com.br" target="_blank">TerabyteShop</a>
+			<a href="https://www.pichau.com.br" target="_blank">Pichau</a>
+		</div>
+		
+		<h3>Por que confiar nessas lojas?</h3>
+		<h3>KaBuM!</h3>
+		<p>	A KaBuM! é uma das maiores lojas de tecnologia e informática do Brasil, com foco em hardware, periféricos e eletrônicos. É conhecida por sua rapidez na entrega, promoções frequentes e suporte confiável. 
+		Muitos usuários confiam na loja por sua segurança em pagamentos, política de garantia clara e estoque amplo de produtos nacionais e importados. Ideal para quem quer montar PCs ou comprar acessórios de forma prática.</p>
+		
+		<h3>TerabyteShop</h3>
+		<p>A TerabyteShop é especializada em computadores personalizados e peças de alto desempenho, sendo referência para gamers e entusiastas de hardware. 
+		A loja é confiável por oferecer produtos originais, montagens sob medida com garantia, além de suporte técnico eficiente. Também disponibiliza frete rápido e informações detalhadas sobre cada produto, 
+		ajudando compradores iniciantes a escolher corretamente.</p>
+		
+		<h3>Pichau</h3>
+		<p>A Pichau é outra gigante do setor de tecnologia, além de ser considerada a maior e-commerce gamer da américa latina, destaca-se por hardware para gamers e profissionais de criação. 
+		É confiável devido à sua transparência na venda, garantia de produtos originais, facilidade de rastreamento de pedidos e suporte ágil. Também possui kits de upgrade e combos com bom custo-benefício, 
+		sendo uma ótima opção para quem quer montar um PC completo ou atualizar componentes.</p>
+    </section>
+
+    <section id="descrições" class="section">
+        <h2>Ilustração de uma placa mãe</h2>
+			<img src="placa-ilustracao.png" width="600" height="430">
+		<table>
+  <thead>
+    <tr>
+      <th>Componente</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1. Slot IDE</strong></td>
+      <td>Conector antigo usado para ligar HDs e drives de CD/DVD mais antigos. Hoje em dia foi substituído pelo SATA.</td>
+    </tr>
+    <tr>
+      <td><strong>2. Conector Fonte 24 Pinos</strong></td>
+      <td>Principal conector de energia da placa-mãe. Fornece energia para todos os componentes essenciais.</td>
+    </tr>
+    <tr>
+      <td><strong>3. Conector SATA</strong></td>
+      <td>Conexões modernas para HDs, SSDs e drives de DVD. Mais rápidos e eficientes que o antigo IDE.</td>
+    </tr>
+    <tr>
+      <td><strong>4. LEDs Painel Frontal</strong></td>
+      <td>Pinos onde são conectados cabos do gabinete, como botão de ligar, reset, LED do HD e LED de energia.</td>
+    </tr>
+    <tr>
+      <td><strong>5. PCIe x16</strong></td>
+      <td>Slot para placas de vídeo (GPU). Também pode ser usado para placas de expansão que exigem maior largura de banda.</td>
+    </tr>
+    <tr>
+      <td><strong>6. Slot PCI</strong></td>
+      <td>Slots antigos de expansão para placas de som, rede, TV e outras. Hoje em dia pouco usados.</td>
+    </tr>
+    <tr>
+      <td><strong>7. Bateria (CMOS)</strong></td>
+      <td>Bateria que mantém as configurações da BIOS (data, hora, preferências de hardware) mesmo quando o PC está desligado.</td>
+    </tr>
+    <tr>
+      <td><strong>8. PCIe x1</strong></td>
+      <td>Slot de expansão para placas menores, como placas de rede, som, captura de vídeo e controladoras.</td>
+    </tr>
+    <tr>
+      <td><strong>9. Chipset</strong></td>
+      <td>Conjunto de circuitos que faz a comunicação entre processador, memória, armazenamento e outros periféricos.</td>
+    </tr>
+    <tr>
+      <td><strong>10. Painel Traseiro</strong></td>
+      <td>Conjunto de portas externas: USB, rede, áudio, HDMI, VGA, entre outras, para conectar dispositivos externos.</td>
+    </tr>
+    <tr>
+      <td><strong>11. Conector de Força (4 pinos)</strong></td>
+      <td>Fornece energia dedicada ao processador (CPU). Trabalha junto com o conector de 24 pinos.</td>
+    </tr>
+    <tr>
+      <td><strong>12. Soquete CPU (LGA 775)</strong></td>
+      <td>Local onde o processador é instalado. Esse modelo é compatível com processadores Intel Core 2 Duo, Core 2 Quad, Pentium e Celeron.</td>
+    </tr>
+    <tr>
+      <td><strong>13. Slots DDR3 DIMM (Memória RAM)</strong></td>
+      <td>Entradas para instalar os módulos de memória RAM. Neste caso, suporta DDR3, com até 2 pentes.</td>
+    </tr>
+  </tbody>
+</table>
+
+    </section>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <p>© 2025 Montagem e Manutenção de Computadores</p>
+        <p>Rodrigo Coelho Oliveira</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function iniciarSite() {
+      document.getElementById('hero').style.display = 'none';
+      document.getElementById('conteudo').style.display = 'block';
+      document.querySelectorAll('.menu a').forEach(a => {
+        a.classList.add('active');
+      });
+      mostrarSecao('intro');
+    }
+
+    function mostrarSecao(id) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      const sec = document.getElementById(id);
+      sec.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        const sectionId = link.getAttribute('data-section');
+        mostrarSecao(sectionId);
+      });
+    });
+  </script>
+</body>
+</html>
+
